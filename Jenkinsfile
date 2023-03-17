@@ -1,4 +1,7 @@
 node{
+    echo "job name is: ${env.JOB_NAME}"
+    echo "node name is: ${env.NODE_NAME}"
+    echo "build number is: ${env.BUILD_NUMBER}"
     def mavenHome = tool name: "maven 3.9.0"
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
     stage('Git/CheckOutCode')
